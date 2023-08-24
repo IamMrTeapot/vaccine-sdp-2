@@ -1,0 +1,36 @@
+.card {
+    width: 80vw;
+    height: 150px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+        0 6px 20px 0 rgba(0,0,0,0.2);
+}
+
+.cardImage {
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.cardDetail {
+    display: flex;
+    flex-direction: column;
+    padding:20px 20px;
+}
+
+.cardTitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: green;
+}
+
+.cardDescription {
+    font-size: 14px;
+    font-weight: 200;
+    font-style: italic;
+    color: black;
+    line-break: auto;
+}
