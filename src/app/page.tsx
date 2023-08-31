@@ -1,17 +1,24 @@
 import Banner from "@/components/Banner";
-import VaccineCard from "@/components/VaccineCard";
 import styles from "./page.module.css";
+import HospitalCard from "@/components/HospitalCard";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.pageBackground}></div>
+    <main>
       <Banner />
       <div className={styles.content}>
-        <VaccineCard />
-        <VaccineCard />
-        <VaccineCard />
-        <VaccineCard />
+        <HospitalCard
+          hospitalName="Chulalongkorn Hospital"
+          imgSrc="/img/chula.jpg"
+        />
+        <HospitalCard
+          hospitalName="Rajavithi Hospital"
+          imgSrc="/img/rajavithi.jpg"
+        />
+        <HospitalCard
+          hospitalName="Thammasat University Hospital"
+          imgSrc="/img/thammasat.jpg"
+        />
       </div>
     </main>
   );
