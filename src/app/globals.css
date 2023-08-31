@@ -1,15 +1,11 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   padding: 0;
   margin: 0;
 }
-
-/* html {
-  background-color: aliceblue;
-  background-image: url("../../public/img/pageBackground.gif");
-  opacity: 20%;
-} */
 
 main {
   width: 100%;
