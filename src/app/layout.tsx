@@ -1,5 +1,7 @@
+import MenuBar from "@/components/MenuBar";
 import "./globals.css";
 import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className={styles.pageBackground}></div>
+        <MenuBar />
+        <div className="mt-[75px]">{children}</div>
+      </body>
     </html>
   );
 }
