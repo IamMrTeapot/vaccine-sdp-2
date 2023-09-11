@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import Image from "next/image";
+import InteractiveHospitalCard from "./InteractiveHospitalCard";
 
 const stardewFont = localFont({
   src: "../../public/fonts/Stardew_Valley_Regular.ttf",
@@ -13,11 +14,7 @@ export default function HospitalCard({
   imgSrc: string;
 }) {
   return (
-    <div
-      className={
-        "w-[80vw] h-[150px] flex rounded-xl overflow-hidden bg-white shadow-lg"
-      }
-    >
+    <InteractiveHospitalCard>
       <div className="w-[20%] h-full relative">
         <Image
           src={imgSrc}
@@ -39,6 +36,6 @@ export default function HospitalCard({
           eligendi dolores autem a quidem totam.
         </div>
       </div>
-    </div>
+    </InteractiveHospitalCard>
   );
 }
