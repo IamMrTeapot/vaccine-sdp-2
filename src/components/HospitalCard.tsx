@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import Image from "next/image";
 import InteractiveHospitalCard from "./InteractiveHospitalCard";
+import { Rating } from "@mui/material";
 
 const stardewFont = localFont({
   src: "../../public/fonts/Stardew_Valley_Regular.ttf",
@@ -9,13 +10,17 @@ const stardewFont = localFont({
 export default function HospitalCard({
   hospitalName,
   imgSrc,
+  ratingValue,
+  dispatchRating,
 }: {
   hospitalName: string;
   imgSrc: string;
+  ratingValue: number;
+  dispatchRating: Function;
 }) {
   return (
     <InteractiveHospitalCard>
-      <div className="w-[20%] h-full relative">
+      <div className="w-[50%] relative">
         <Image
           src={imgSrc}
           alt="vaccine picture"
@@ -35,6 +40,14 @@ export default function HospitalCard({
           soluta. Accusamus, nulla itaque laboriosam quaerat reprehenderit
           eligendi dolores autem a quidem totam.
         </div>
+        <Rating
+          value={ratingValue}
+          onChange={(e, newValue) => {
+            dispatchRating({ type: "change", hospitalName, newValue });
+          }}
+          precision={0.5}
+          className="py-2"
+        />
       </div>
     </InteractiveHospitalCard>
   );
