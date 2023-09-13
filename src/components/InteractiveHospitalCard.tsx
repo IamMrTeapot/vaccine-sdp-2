@@ -21,7 +21,7 @@ export default function InteractiveHospitalCard({
 
   return (
     <div
-      className="w-[80vw] h-[150px] flex rounded-xl overflow-hidden bg-white shadow-lg"
+      className="w-[80vw] h-fit flex rounded-xl overflow-hidden bg-white shadow-lg"
       onMouseOver={(e) => {
         onMouseAction(e);
       }}
