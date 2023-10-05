@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-export function VlogPlayer({
+export default function VideoPlayer({
   vdoSrc,
   isPlaying,
 }: {

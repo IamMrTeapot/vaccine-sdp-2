@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { VlogPlayer } from "./VlogPlayer";
+import VideoPlayer from "./VideoPlayer";
 import { useWindowListener } from "@/hooks/useWindowListener";
 
-export function PromoteCard() {
+export default function PromoteCard() {
   const [playing, setPlaying] = useState(true);
 
   useWindowListener("contextmenu", (e) => {
@@ -16,7 +16,7 @@ export function PromoteCard() {
         bg-gray-200 flex flex-row
     "
     >
-      <VlogPlayer vdoSrc="/video/getvaccine.mp4" isPlaying={playing} />
+      <VideoPlayer vdoSrc="/video/getvaccine.mp4" isPlaying={playing} />
       <div className="m-5 flex flex-col justify-between">
         Get your vaccine today.
         <button
