@@ -34,10 +34,10 @@ export default function CardPanel() {
 
   //Mock Data
   const mockHospitalList = [
-    { hid: 1, name: "Chulalongkorn Hospital", imgSrc: "/img/chula.jpg" },
-    { hid: 2, name: "Rajavithi Hospital", imgSrc: "/img/rajavithi.jpg" },
+    { hid: "1", name: "Chulalongkorn Hospital", imgSrc: "/img/chula.jpg" },
+    { hid: "2", name: "Rajavithi Hospital", imgSrc: "/img/rajavithi.jpg" },
     {
-      hid: 3,
+      hid: "3",
       name: "Thammasat University Hospital",
       imgSrc: "/img/thammasat.jpg",
     },
@@ -47,7 +47,7 @@ export default function CardPanel() {
     <div className="flex flex-col items-center gap-[20px] py-[70px]">
       {mockHospitalList.map((hospital) => {
         return (
-          <Link href={`/hospital/${hospital.hid}`}>
+          <Link href={`/hospital/${hospital.hid}`} key={hospital.hid}>
             <HospitalCard
               hospitalName={hospital.name}
               imgSrc={hospital.imgSrc}
@@ -62,6 +62,7 @@ export default function CardPanel() {
         return (
           value !== 0 && (
             <div
+              key={key}
               onClick={(e) => {
                 e.stopPropagation();
                 dispatchRating({

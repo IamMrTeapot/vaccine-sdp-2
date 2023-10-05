@@ -42,5 +42,5 @@ export default function HospitalDetailPage({
 }
 
 export async function generateStaticParams() {
-  return [{ hid: 1 }, { hid: 2 }, { hid: 3 }];
+  return [{ hid: "1" }, { hid: "2" }, { hid: "3" }];
 }
