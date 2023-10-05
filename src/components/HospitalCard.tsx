@@ -40,14 +40,20 @@ export default function HospitalCard({
           soluta. Accusamus, nulla itaque laboriosam quaerat reprehenderit
           eligendi dolores autem a quidem totam.
         </div>
-        <Rating
-          value={ratingValue}
-          onChange={(e, newValue) => {
-            dispatchRating({ type: "change", hospitalName, newValue });
-          }}
-          precision={0.5}
+        <div
           className="py-2"
-        />
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <Rating
+            value={ratingValue}
+            onChange={(e, newValue) => {
+              dispatchRating({ type: "change", hospitalName, newValue });
+            }}
+            precision={0.5}
+          />
+        </div>
       </div>
     </InteractiveHospitalCard>
   );
