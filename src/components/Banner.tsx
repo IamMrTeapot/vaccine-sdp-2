@@ -3,6 +3,7 @@ import styles from "./banner.module.css";
 import Image from "next/image";
 import localFont from "next/font/local";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const stardewFont = localFont({
   src: "../../public/fonts/Stardew_Valley_ALL_CAPS.ttf",
@@ -17,6 +18,7 @@ export default function Banner() {
   ];
 
   const [index, setIndex] = useState(0);
+  const router = useRouter();
 
   return (
     <div className={styles.bannerContainer} onClick={() => setIndex(index + 1)}>
@@ -38,10 +40,22 @@ export default function Banner() {
           objectFit="cover"
           priority
         />
-        <div className={styles.bannerTextContainer}>
+        <div className={`${styles.bannerTextContainer} flex flex-col`}>
           <div className={`${styles.bannerText} ${stardewFont.className}`}>
             Vaccine Reservation
           </div>
+          <button
+            className="z-10 bg-[saddlebrown] text-white border 
+          border-white font-semibold p-2 m-2 rounded
+          hover:bg-white hover:text-[saddlebrown] hover:border-transparent
+          "
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push("/hospital");
+            }}
+          >
+            Pick Your Hospital Here!
+          </button>
         </div>
       </div>
     </div>

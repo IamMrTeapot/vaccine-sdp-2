@@ -1,6 +1,7 @@
 "use client";
 import { useReducer } from "react";
 import HospitalCard from "./HospitalCard";
+import Link from "next/link";
 
 export default function CardPanel() {
   const ratingReducer = (
@@ -31,31 +32,37 @@ export default function CardPanel() {
     ])
   );
 
+  //Mock Data
+  const mockHospitalList = [
+    { hid: "1", name: "Chulalongkorn Hospital", imgSrc: "/img/chula.jpg" },
+    { hid: "2", name: "Rajavithi Hospital", imgSrc: "/img/rajavithi.jpg" },
+    {
+      hid: "3",
+      name: "Thammasat University Hospital",
+      imgSrc: "/img/thammasat.jpg",
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center gap-[20px] py-[70px]">
-      <HospitalCard
-        hospitalName="Chulalongkorn Hospital"
-        imgSrc="/img/chula.jpg"
-        ratingValue={ratingList.get("Chulalongkorn Hospital") ?? 0}
-        dispatchRating={dispatchRating}
-      />
-      <HospitalCard
-        hospitalName="Rajavithi Hospital"
-        imgSrc="/img/rajavithi.jpg"
-        ratingValue={ratingList.get("Rajavithi Hospital") ?? 0}
-        dispatchRating={dispatchRating}
-      />
-      <HospitalCard
-        hospitalName="Thammasat University Hospital"
-        imgSrc="/img/thammasat.jpg"
-        ratingValue={ratingList.get("Thammasat University Hospital") ?? 0}
-        dispatchRating={dispatchRating}
-      />
+      {mockHospitalList.map((hospital) => {
+        return (
+          <Link href={`/hospital/${hospital.hid}`} key={hospital.hid}>
+            <HospitalCard
+              hospitalName={hospital.name}
+              imgSrc={hospital.imgSrc}
+              ratingValue={ratingList.get(hospital.name) ?? 0}
+              dispatchRating={dispatchRating}
+            />
+          </Link>
+        );
+      })}
       <div className="text-2xl font-sans">Rating List</div>
       {Array.from(ratingList.entries()).map(([key, value]) => {
         return (
           value !== 0 && (
             <div
+              key={key}
               onClick={(e) => {
                 e.stopPropagation();
                 dispatchRating({
