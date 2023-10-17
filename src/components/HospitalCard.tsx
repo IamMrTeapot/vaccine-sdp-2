@@ -15,8 +15,8 @@ export default function HospitalCard({
 }: {
   hospitalName: string;
   imgSrc: string;
-  ratingValue: number;
-  dispatchRating: Function;
+  ratingValue?: number;
+  dispatchRating?: Function;
 }) {
   return (
     <InteractiveHospitalCard>
@@ -40,20 +40,22 @@ export default function HospitalCard({
           soluta. Accusamus, nulla itaque laboriosam quaerat reprehenderit
           eligendi dolores autem a quidem totam.
         </div>
-        <div
-          className="py-2"
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <Rating
-            value={ratingValue}
-            onChange={(e, newValue) => {
-              dispatchRating({ type: "change", hospitalName, newValue });
+        {dispatchRating && (
+          <div
+            className="py-2"
+            onClick={(e) => {
+              e.stopPropagation();
             }}
-            precision={0.5}
-          />
-        </div>
+          >
+            <Rating
+              value={ratingValue}
+              onChange={(e, newValue) => {
+                dispatchRating({ type: "change", hospitalName, newValue });
+              }}
+              precision={0.5}
+            />
+          </div>
+        )}
       </div>
     </InteractiveHospitalCard>
   );
