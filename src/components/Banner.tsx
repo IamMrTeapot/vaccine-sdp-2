@@ -4,6 +4,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const stardewFont = localFont({
   src: "../../public/fonts/Stardew_Valley_ALL_CAPS.ttf",
@@ -19,6 +20,7 @@ export default function Banner() {
 
   const [index, setIndex] = useState(0);
   const router = useRouter();
+  const { data: session } = useSession()
 
   return (
     <div className={styles.bannerContainer} onClick={() => setIndex(index + 1)}>
@@ -41,6 +43,9 @@ export default function Banner() {
           priority
         />
         <div className={`${styles.bannerTextContainer} flex flex-col`}>
+          { session ? <div className="z-[30] text-[saddlebrown]
+           font-bold my-2">Hello! {session.user?.name}
+           </div> : null}
           <div className={`${styles.bannerText} ${stardewFont.className}`}>
             Vaccine Reservation
           </div>
