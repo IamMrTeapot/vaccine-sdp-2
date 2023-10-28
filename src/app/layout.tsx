@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import NextAuthProvider from "@/providers/NextAuthProvider";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,17 +17,18 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  const nextAuthSession = await getServerSession(authOptions)
+  const nextAuthSession = await getServerSession(authOptions);
 
   return (
     <html lang="en">
       <body>
-        <NextAuthProvider session={nextAuthSession}>
-          <div className={styles.pageBackground}></div>
-          <MenuBar />
-          <div className="mt-[75px]">{children}</div>
-        </NextAuthProvider>
+        <ReduxProvider>
+          <NextAuthProvider session={nextAuthSession}>
+            <div className={styles.pageBackground}></div>
+            <MenuBar />
+            <div className="mt-[75px]">{children}</div>
+          </NextAuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
