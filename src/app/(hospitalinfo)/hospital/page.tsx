@@ -11,9 +11,10 @@ export default async function HospitalPage() {
   const hospitals = getHospitals();
 
   const session = await getServerSession(authOptions);
-  if (!session || !session.user.token) return <div>Please Login First</div>;
-
-  const profile = await getUserProfile(session.user.token);
+  const profile =
+    !session || !session.user.token
+      ? { data: { role: "any" } }
+      : await getUserProfile(session?.user.token);
 
   return (
     <main className="p-5">
