@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import HospitalCatalog from "@/components/hospitalCatalog";
+import { expect } from "@jest/globals";
 
 const mockHospitals = {
   success: true,
